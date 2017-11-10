@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /*
+    * 题目要求：
+    * 已设置了页面盒模型的计算方式为border-box
+    * 1、需要设置左右两边的橙色条采用了伪元素来生成，宽度为5px且背景色为#fc6b3f
+    * 2、需要左边的 logo 采用了背景图片，图片地址为“http://coding.imweb.io/img/imweb-logo.png”，且背景图片不重复。并且由于默认图片大于容器的大小，所以需要设置background-size 为cover
+    * 3、需要设置列表的非第一个item的上外边距为10px
+    * 4、补充完善.info-list .iconfont规则的样式，设置文字水平居中，并且圆角为50%
+    */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #333;
+    }
+
+    ul {
+      list-style: none outside none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 拷贝 iconfont 样式于此 */
+    @font-face {
+      font-family: 'webfont';
+      src: url('//7.url.cn/edu/classroom/assets/lib/fonts/webfont.eot?ljbe2w');
+      src: url('//7.url.cn/edu/classroom/assets/lib/fonts/webfont.eot?ljbe2w#iefix') format('embedded-opentype'), url('//7.url.cn/edu/classroom/assets/lib/fonts/webfont.ttf?ljbe2w') format('truetype'), url('//7.url.cn/edu/classroom/assets/lib/fonts/webfont.woff?ljbe2w') format('woff'), url('//7.url.cn/edu/classroom/assets/lib/fonts/webfont.svg?ljbe2w#webfont') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    .iconfont {
+      font-family: 'webfont' !important;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .icon-search:before {
+      content: "\f002";
+    }
+
+    .icon-email:before {
+      content: "\f003";
+    }
+
+    .icon-user:before {
+      content: "\f007";
+    }
+
+    .icon-map:before {
+      content: "\f041";
+    }
+
+    .icon-phone:before {
+      content: "\f095";
+    }
+
+    .icon-link:before {
+      content: "\f0c1";
+    }
+
+    .business-card {
+      width: 405px;
+      height: 250px;
+      background: #fff;
+      box-shadow: 0 0 5px rgba(255, 255, 255, .5);
+      padding-top: 43px;
+      font-size: 14px;
+      color: #333;
+      position: relative;
+    }
+
+    .business-card::before,
+    .business-card::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 33.3%;
+      height: 33.3%;
+      /* 设置宽度、背景色 */
+      width: 5px;
+      background-color: #fc6b3f;
+    }
+
+    .business-card::after {
+      left: auto;
+      right: 0;
+    }
+
+    .business-card .card-logo {
+      display: inline-block;
+      vertical-align: middle;
+      width: 50px;
+      height: 50px;
+      margin-left: 50px;
+      margin-right: 50px;
+      /* 设置背景图片 */
+      background-image: url('http://coding.imweb.io/img/imweb-logo.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .business-card .card-bd {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .info-list .info-item:not(:first-child) {
+      /* 设置上外边距 */
+      margin-top: 10px;
+    }
+
+    .info-list .item-link {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .info-list .iconfont {
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: middle;
+      border: 1px solid #ccc;
+      width: 24px;
+      height: 24px;
+      margin-right: 5px;
+      /* 设置圆角、水平居中  */
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    .info-list .iconfont:before {
+      line-height: 22px;
+    }
+  </style>
+</head>
+<body>
+  <div class="business-card">
+    <i class="card-logo"></i>
+    <div class="card-bd">
+        <ul class="info-list">
+            <li class="info-item">
+                <i class="iconfont icon-user"></i>
+                <span>Henry</span>
+            </li>
+            <li class="info-item">
+                <i class="iconfont icon-phone"></i>
+                <span>0755-86013388</span>
+            </li>
+            <li class="info-item">
+                <i class="iconfont icon-email"></i>
+                <span><a class="item-link" href="mailto:henry@imweb.io">henry@imweb.io</a></span>
+            </li>
+            <li class="info-item">
+                <i class="iconfont icon-link"></i>
+                <span><a class="item-link" href="http://imweb.io">http://imweb.io</a></span>
+            </li>
+            <li class="info-item">
+                <i class="iconfont icon-map"></i>
+                <span>深圳市南山区深南大道10000</span>
+            </li>
+        </ul>
+    </div>
+  </div>
+</body>
+</html>

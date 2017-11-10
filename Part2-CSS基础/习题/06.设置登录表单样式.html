@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /*
+    * 题目要求：
+    * 1、设置除了最后一个表单item之外的底部外边距为10px
+    * 2、设置鼠标滑过输入框，改变边框颜色（border-color）为“#188eee”
+    * 3、设置提交按钮光标（cursor）为手型
+    */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .form {
+      font-size: 14px;
+    }
+
+    .form .f-item:not(:last-child) {
+      /* 设置底部外边距为10px */
+      margin-bottom: 10px;
+    }
+
+    .form .f-text {
+      width: 250px;
+      padding: 9px 4px;
+      border: 1px solid #ccc;
+    }
+
+    .form .f-text:focus {
+      outline: 0;
+    }
+
+    .form .f-text:hover {
+      /* 设置边框颜色为“#188eee” */
+      border-color: #188eee;
+    }
+
+    .form .f-btn {
+      width: 250px;
+      height: 40px;
+      background-color: #188eee;
+      color: #fff;
+      border: 0;
+      /* 设置光标类型（cursor）为手型 */
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+    <form action="#" class="form">
+        <div class="f-item"><input class="f-text" type="text" name="username" placeholder="用户名"></div>
+        <div class="f-item"><input class="f-text" type="password" name="pwd" placeholder="密码"></div>
+        <div class="f-item"><input class="f-checkbox" type="checkbox" name="remember">下次自动登录</div>
+        <div class="f-item"><input class="f-btn" type="submit" value="登录"></div>
+    </form>
+</body>
+</html>

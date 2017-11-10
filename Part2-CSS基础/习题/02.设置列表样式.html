@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /*
+    * 题目要求：
+    * 1、小图标的宽高皆为“18px”，右外边距为“10px” 
+    * 2、已完成状态的背景定位
+    * 3、已完成的文本装饰值为“line-through”（删除线效果）
+    */
+
+    ul {
+      list-style: none outside none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .todo-list .todo-item {
+      padding: 5px 0;
+    }
+
+    .todo-list .todo-item .icon-todo,
+    .todo-list .todo-item .item-tt {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .todo-list .todo-item .icon-todo {
+      background: url('http://coding.imweb.io/img/p2/icon-todo.png') no-repeat;
+      /* 设置宽高大小，右边距及背景 */
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+    }
+
+    .todo-list .todo-item:not(.item--done):hover .icon-todo {
+      background-position: 0 -20px; 
+    }
+
+    .todo-list .item--done .icon-todo {
+      /* 设置已完成的背景定位 */
+      background-position: 0 -40px;
+    }
+
+    .todo-list .item--done .item-tt {
+      /* 设置文本装饰 text-decoration */
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body>
+  <ul class="todo-list">
+    <li class="todo-item item--done"><i class="icon-todo"></i><span class="item-tt">解决遗留bug</span></li>
+    <li class="todo-item"><i class="icon-todo"></i><span class="item-tt">准备分享资料</span></li>
+    <li class="todo-item item--done"><i class="icon-todo"></i><span class="item-tt">xxx项目需求宣讲会</span></li>
+    <li class="todo-item item--done"><i class="icon-todo"></i><span class="item-tt">团队组会</span></li>
+    <li class="todo-item"><i class="icon-todo"></i><span class="item-tt">xxx组件开发</span></li>
+    <li class="todo-item"><i class="icon-todo"></i><span class="item-tt">xxx邮件</span></li>
+  </ul>
+</body>
+</html>
