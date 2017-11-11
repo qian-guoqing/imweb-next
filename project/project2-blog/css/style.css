@@ -1,0 +1,32 @@
+body {
+  background: url(' http://coding.imweb.io/img/project/blog/bg.jpg') no-repeat right bottom;
+}
+
+/* 整体样式 */
+.page-detail {
+  width: 650px;
+  margin-left: 50px;
+}
+
+/* 标题样式 */
+.page-detail .page-tt {
+  font-size: 36px;
+  line-height: 2;
+  margin: 30px 0;
+  color: #188eee;
+}
+
+/* 文章主体部分样式 */
+.article h2 {
+  font-size: 24px;
+  line-height: 2;
+  margin: 20px 0;
+  background: linear-gradient(90deg, #188eee 15%, #f5f5f5 0) no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 1.8em;
+}
+
+/* .article h2::after {
+  width: 100%;
+  border: linear-gradient(#188eee 30%, #f5f5f5);
+} */
