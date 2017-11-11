@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>弹窗</title>
+  <link rel="stylesheet" href="//8.url.cn/edu/classroom/assets/lib/reset.css">
+  <style>
+    /*
+    * 题目要求：
+    * 1、需设置蒙层 overlay 相对于浏览器窗口进行绝对定位 (使用fixed)
+    * 2、需设置弹窗 dialog 上下居中展示 （使用transform）
+    */
+
+    .overlay {
+      /* TODO: 需设置蒙层 overlay 相对于浏览器窗口进行绝对定位 */
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 4000;
+    }
+
+    .dialog {
+      width: 280px;
+      text-align: center;
+      position: fixed;
+      background: #fff;
+      z-index: 4001;
+      border-radius: 5px;
+      /* TODO: 需设置dialog上下居中展示 */
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .dialog .dialog-bd {
+      padding: 20px 10px;
+    }
+
+    .dialog .dialog-ft {
+      display: flex;
+      line-height: 44px;
+      border-top: 1px solid #dbdbdb;
+    }
+
+    .dialog .dialog-ft .ft-btn {
+      flex: 1;
+      text-align: center;
+      cursor: pointer;
+      border-left: 1px solid #dbdbdb;
+    }
+
+    .dialog .dialog-ft .ft-btn:first-child {
+      border-left: 0;
+    }
+  </style>
+</head>
+<body>
+  <!--请在style.css中根据题目要求，完成本次习题-->
+  <h1>弹窗习题</h1>
+  <div class="overlay"></div>
+  <div class="dialog">
+    <div class="dialog-bd">
+      <p class="dialog-text">提示文案</p>
+    </div>
+    <footer class="dialog-ft">
+      <div class="ft-btn">取消</div>
+      <div class="ft-btn">确定</div>
+    </footer>
+  </div>
+</body>
+</html>

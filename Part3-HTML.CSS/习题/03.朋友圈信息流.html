@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>朋友圈信息流</title>
+    <link rel="stylesheet" href="//8.url.cn/edu/classroom/assets/lib/reset.css">
+    <style>
+      /*
+      * 题目要求：
+      * 1、设置信息为 flexbox 布局，左边用户头像为固定宽高40px，右边内容宽度不确定(flex 为 1)
+      * 2、设置转发信息的为 flexbox 布局，且内容垂直居中对齐（align-items）
+      * 3、设置信息内容只有一张图片，其最大宽度或高度不超过180px
+      * 4、设置信息有两张及以上的图片，需要统一裁剪成正方形图片（80px * 80px）显示，且设置为向左边浮动
+      */
+
+      .page-moments {
+        max-width: 640px;
+        background: #fff;
+      }
+
+      /* header */
+      .header {
+        margin-bottom: 20px;
+      }
+      .header-banner {
+        padding-top: 100%;
+        position: relative;
+        margin-top: -25%;
+        background: url(http://coding.imweb.io/img/p3/moments-banner.jpg) no-repeat;
+        background-size: cover;
+      }
+      .header-user {
+        display: flex;
+        margin-top: -52px;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+      }
+      .header-user .user-name {
+        font-size: 16px;
+        color: #fff;
+      }
+      .header-user .user-link {
+        padding: 2px;
+        border: 1px solid #ccc;
+        background: #fff;
+        margin: 0 10px;
+      }
+
+      /* moments */
+
+      .moments-item {
+        /* TODO: 设置朋友圈每条信息为 flexbox 布局 */
+        display: flex;
+        padding: 20px 10px;
+        border-bottom: 1px solid #ccc;
+        font-size: 12px;
+      }
+      .moments-item .item-left {
+        /* TODO: 设置朋友圈信息的左边用户头像为固定宽高40px */
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+      }
+      .moments-item .item-right {
+        /* TODO: 设置朋友圈信息的右边内容宽度不固定(flex 为 1) */
+        flex: 1;
+      }
+      .moments-item .item-name {
+        color: #637ab4;
+        font-size: 16px;
+        line-height: 1.3;
+      }
+      .moments-item .item-msg {
+        margin-bottom: 5px;
+      }
+      .moments-item .item-share {
+        /* TODO: 设置转发信息的为 flexbox 布局，且内容垂直居中对齐（align-items）*/
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        background: #f3f3f3;
+        margin-bottom: 5px;
+      }
+      .moments-item .item-share .share-img {
+        margin-right: 5px;
+      }
+      .moments-item .item-share .share-tt {
+        line-height: 20px;
+        max-height: 40px;
+        overflow: hidden;
+      }
+      .moments-item .item-only-img {
+        /* TODO: 设置信息内容只有一张图片，其最大宽度或高度不超过180px */
+        max-width: 180px;
+        max-height: 180px;
+        margin-bottom: 10px;
+      }
+      .moments-item .item-pic {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .moments-item .pic-item {
+        /* TODO: 设置信息有两张及以上的图片，需要统一裁剪成正方形图片（80px * 80px）显示，且设置为向左边浮动 */
+        float: left;
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      .moments-item .item-ft {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .moments-item .item-ft .item-time {
+        color: #999;
+        font-size: 12px;
+      }
+      .moments-item .item-ft .item-reply {
+        background: currentColor;
+        width: 16px;
+        height: 12px;
+        position: relative;
+        color: #97aad0;
+      }
+      .moments-item .item-ft .item-reply::before {
+        content: "";
+        width: 0;
+        height: 0;
+        border: 3px solid currentColor;
+        border-color: transparent currentColor transparent transparent;
+        border-width : 2px 3px;
+        position: absolute;
+        left: -6px;
+        top: 50%;
+        transform: translate(0, -50%);
+      }
+      .moments-item .item-ft .item-reply::after {
+        content: "";
+        width: 3px;
+        height: 3px;
+        background: #fff;
+        border-radius: 1px;
+        box-shadow: 7px 0 0 #fff;
+        position: absolute;
+        top: 50%;
+        left: 3px;
+        transform: translate(0, -50%);
+      }
+
+      .moments-item .reply-zone {
+        background: #f3f3f3;
+        margin-top: 5px;
+        position: relative;
+      }
+      .moments-item .reply-zone .reply-who {
+        color: #637ab4;
+      }
+      .moments-item .reply-zone::before {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 5px solid #f3f3f3;
+        border-color: transparent transparent #f3f3f3 transparent;
+        border-width: 4px 5px;
+        top: -8px;
+        left: 10px;
+      }
+      .moments-item .reply-praise {
+        padding: 2px 8px 0;
+      }
+      .moments-item .icon-praise {
+        display: inline-block;
+        vertical-align: -3px;
+        width: 16px;
+        height: 16px;
+        background: url(http://coding.imweb.io/img/p3/moments-love.png) no-repeat;
+        background-size: cover;
+      }
+      .moments-item .reply-comment {
+        padding: 5px 8px;
+      }
+      .moments-item .reply-praise+.reply-comment {
+        border-top: 1px solid #ccc;
+      }
+    </style>
+</head>
+<body>
+    <!--请在style.css中根据题目要求，完成本次习题-->
+    <div class="page-moments">
+        <header class="header">
+            <div class="header-banner"></div>
+            <div class="header-user">
+                <span class="user-name">学友</span>
+                <a class="user-link" href="#"><img src="http://coding.imweb.io/img/default/avatar.jpg" width="70" height="70" alt=""></a>
+            </div>
+        </header>
+        <div class="moments-list">
+            <div class="moments-item">
+                <a class="item-left" href="#">
+                    <img src="http://coding.imweb.io/img/default/avatar.jpg" width="42" height="42" alt="">
+                </a>
+                <div class="item-right">
+                    <a href="#" class="item-name">华仔</a>
+                    <p class="item-msg">琐碎之美</p>
+                    <ul class="item-pic">
+                        <li class="pic-item" style="background-image: url(http://coding.imweb.io/img/default/z-1.jpg)"></li>
+                        <li class="pic-item" style="background-image: url(http://coding.imweb.io/img/default/z-2.jpg)"></li>                        
+                        <li class="pic-item" style="background-image: url(http://coding.imweb.io/img/default/k-1.jpg)"></li>
+                        <li class="pic-item" style="background-image: url(http://coding.imweb.io/img/default/g-1.jpg)"></li> 
+                    </ul>
+                    <div class="item-ft">
+                        <span class="item-time">51分钟前</span>
+                        <span class="item-reply"></span>
+                    </div>
+                    <div class="reply-zone">
+                        <div class="reply-praise">
+                            <i class="icon-praise"></i>
+                            <a href="#" class="reply-who">朝伟</a>，<a href="#" class="reply-who">jay</a>
+                        </div>
+                        <div class="reply-comment">
+                            <div class="comment-item">
+                                <a class="reply-who" href="#">周润发</a>：恭喜华仔！！！
+                            </div>
+                            <div class="comment-item">
+                                <a class="reply-who" href="#">曾志伟</a>：什么时候请客啊
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="moments-item">
+                <a class="item-left" href="#">
+                    <img src="http://coding.imweb.io/img/default/avatar.jpg" width="42" height="42" alt="">
+                </a>
+                <div class="item-right">
+                    <a href="#" class="item-name">华仔</a>
+                    <p class="item-msg">全民读书日</p>
+                    <a class="item-share">
+                        <img class="share-img" src="http://coding.imweb.io/img/p3/transition-hover.jpg" width="40" height="40" alt="">
+                        <p class="share-tt">漂洋过海来看你</p>
+                    </a>
+                    <div class="item-ft">
+                        <span class="item-time">51分钟前</span>
+                        <span class="item-reply"></span>
+                    </div>
+                    <div class="reply-zone">
+                        <div class="reply-praise">
+                            <i class="icon-praise"></i>
+                            <a href="#" class="reply-who">朝伟</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="moments-item">
+                <a class="item-left" href="#">
+                    <img src="http://coding.imweb.io/img/default/avatar.jpg" width="42" height="42" alt="">
+                </a>
+                <div class="item-right">
+                    <a href="#" class="item-name">华仔</a>
+                    <p class="item-msg">很好的色彩</p>
+                    <img class="item-only-img" src="http://coding.imweb.io/img/default/k-2.jpg" alt="">
+                    <div class="item-ft">
+                        <span class="item-time">51分钟前</span>
+                        <span class="item-reply"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="moments-item">
+                <a class="item-left" href="#">
+                    <img src="http://coding.imweb.io/img/default/avatar.jpg" width="42" height="42" alt="">
+                </a>
+                <div class="item-right">
+                    <a href="#" class="item-name">华仔</a>
+                    <p class="item-msg">以后咖啡都不敢浪费了</p>
+                    <img class="item-only-img" src="http://coding.imweb.io/img/default/g-1.jpg" alt="">
+                    <div class="item-ft">
+                        <span class="item-time">51分钟前</span>
+                        <span class="item-reply"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
