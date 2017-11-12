@@ -1,5 +1,10 @@
 body {
   background: url(' http://coding.imweb.io/img/project/blog/bg.jpg') no-repeat right bottom;
+  background-attachment: fixed;
+  color: #333;
+
+  /* 计数器 */
+  counter-reset: section;
 }
 
 /* 整体样式 */
@@ -9,7 +14,7 @@ body {
 }
 
 /* 标题样式 */
-.page-detail .page-tt {
+.page-detail > .page-tt {
   font-size: 36px;
   line-height: 2;
   margin: 30px 0;
@@ -17,7 +22,7 @@ body {
 }
 
 /* 文章主体部分样式 */
-.article h2 {
+.page-detail > .article h2 {
   font-size: 24px;
   line-height: 2;
   margin: 20px 0;
@@ -26,7 +31,100 @@ body {
   background-position: 0 1.8em;
 }
 
-/* .article h2::after {
+.page-detail > .article > ol li::before {
+  counter-increment: section;
+  content: '0' counter(section) '/';
+  font-family: monospace, Helvetica, sans-serif;
+  color: #999;
+  margin-right: 10px;
+}
+
+
+.page-detail > .article p {
+  font-size: 16px;
+  line-height: 1.8;
+  text-indent: 2em;
+  margin: 10px 0;
+}
+
+
+.page-detail > .article h2:nth-of-type(3) ~ img {
+  display: block;
+  border: 1px solid #f5f5f5;
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.page-detail > .article h2:nth-of-type(4) ~ p.ps {
+  color: #999;
+}
+
+.page-detail > .article h2:nth-of-type(4) ~ p.ps > a:hover {
+  color: #188eee;
+}
+
+/* 评论区 */
+.page-detail > .section-comment {
+  margin-top: 50px;
+  border-top: 3px solid #188eee;
+  padding-top: 30px;
+}
+
+.page-detail > .section-comment > .form--comment > .f-textarea {
   width: 100%;
-  border: linear-gradient(#188eee 30%, #f5f5f5);
-} */
+  border: 1px solid #dbdbdb;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.page-detail > .section-comment > .form--comment > .f-textarea:hover {
+  border: 1px solid #ccc;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.page-detail > .section-comment > .form--comment > .f-btn {
+  color: #fff;
+  border: none;
+  background-color: #188eee;
+  border-radius: 5px;
+  font-size: 20px;
+  margin: 10px 0 20px 0;
+}
+
+.page-detail > .section-comment > .form--comment > .f-btn:hover {
+  background-color: #147de2;
+}
+
+.page-detail > .section-comment > .comment-list .comment-item {
+  background-color: #f5f5f5;
+  font-size: 12px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.page-detail > .section-comment > .comment-list .comment-item:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.page-detail > .section-comment > .comment-list .comment-item > .comment-bd p {
+  font-size: 14px;
+}
+
+.page-detail > .section-comment > .comment-list .comment-item .item-time {
+  color: #666;
+}
+
+.page-detail > .section-comment > .comment-list .comment-item .item-user,
+.page-detail > .section-comment > .comment-list .comment-item .ft-oper {
+  color: #188eee;
+  cursor: pointer;
+}
+
+.page-detail > .section-comment > .comment-list .comment-item .item-user:hover,
+.page-detail > .section-comment > .comment-list .comment-item .ft-oper:hover {
+  color: #147de2;
+}
+
+.page-detail > .section-comment > .comment-list .comment-item .comment-ft {
+  text-align: right;
+}
