@@ -1,130 +1,143 @@
+/* 抽离公共的样式 */
+.page-tt,
+.ps > a:hover,
+.item-user,
+.ft-oper {
+  color: #188eee;
+}
+
+.article > ol li::before,
+.ps {
+  color: #999;
+}
+
+.page-tt,
+.article > h2 {
+  line-height: 2;
+}
+
+.f-textarea:hover,
+.comment-item:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+}
+
+.f-textarea,
+.f-btn {
+  border-radius: 5px;
+}
+
+/* 
+  由于不确定是否能够更改HTML，所以将类似的样式以上面的方式抽取出来，我的想法是将这些公共样式去一个别的class名字，然后在HTML中的class中再添加这个新的公共样式名。
+*/
+
+/* body样式 */
 body {
-  background: url(' http://coding.imweb.io/img/project/blog/bg.jpg') no-repeat right bottom;
-  background-attachment: fixed;
   color: #333;
+  background: url('http://coding.imweb.io/img/project/blog/bg.jpg') no-repeat right bottom;
+  background-attachment: fixed;
 
   /* 计数器 */
   counter-reset: section;
 }
 
-/* 整体样式 */
+/* 设置整体样式 */
 .page-detail {
   width: 650px;
   margin-left: 50px;
 }
 
-/* 标题样式 */
-.page-detail > .page-tt {
-  font-size: 36px;
-  line-height: 2;
+/* 设置头部title样式 */
+.page-tt {
   margin: 30px 0;
-  color: #188eee;
+  font-size: 36px;
 }
 
-/* 文章主体部分样式 */
-.page-detail > .article h2 {
-  font-size: 24px;
-  line-height: 2;
+/* 设置文章标题部分样式 */
+.article > h2 {
   margin: 20px 0;
-  background: linear-gradient(90deg, #188eee 15%, #f5f5f5 0) no-repeat;
+  font-size: 24px;
+  background: linear-gradient(to right, #188eee 100px, #ccc 101px) no-repeat;
   background-size: 100% 1px;
-  background-position: 0 1.8em;
+  background-position: left bottom;
 }
 
-.page-detail > .article > ol li::before {
+.article > ol li::before {
+  margin-right: 10px;
+  font-family: monospace, Helvetica, sans-serif;
+  font-style: italic;
   counter-increment: section;
   content: '0' counter(section) '/';
-  font-family: monospace, Helvetica, sans-serif;
-  color: #999;
-  margin-right: 10px;
 }
 
-
-.page-detail > .article p {
+.article p {
+  margin: 10px 0;
   font-size: 16px;
   line-height: 1.8;
   text-indent: 2em;
-  margin: 10px 0;
 }
 
-
-.page-detail > .article h2:nth-of-type(3) ~ img {
+.article img {
   display: block;
+  margin: 10px 0; 
+  /* 此处两张图片虽然一个margin-top和另一张图片margin-bottom的值均为10px 由于，当上下两个margin相遇时，margin会产生重叠现象，此时会选择较大的margin值，而并非将两个margin相加。*/
+  padding: 5px;
   border: 1px solid #f5f5f5;
-  padding: 5px;
-  margin: 10px 0;
 }
 
-.page-detail > .article h2:nth-of-type(4) ~ p.ps {
-  color: #999;
-}
-
-.page-detail > .article h2:nth-of-type(4) ~ p.ps > a:hover {
-  color: #188eee;
-}
-
-/* 评论区 */
-.page-detail > .section-comment {
+/* 评论区的样式 */
+.section-comment {
   margin-top: 50px;
-  border-top: 3px solid #188eee;
   padding-top: 30px;
+  border-top: 3px solid #188eee;
 }
 
-.page-detail > .section-comment > .form--comment > .f-textarea {
+.f-textarea {
   width: 100%;
-  border: 1px solid #dbdbdb;
+  height: 120px;
   padding: 5px;
-  border-radius: 5px;
+  border: 1px solid #dbdbdb;
 }
 
-.page-detail > .section-comment > .form--comment > .f-textarea:hover {
-  border: 1px solid #ccc;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+.f-textarea:hover {
+  border-color: #ccc;
 }
 
-.page-detail > .section-comment > .form--comment > .f-btn {
+.f-btn {
+  margin: 10px 0 20px 0;
   color: #fff;
   border: none;
   background-color: #188eee;
-  border-radius: 5px;
-  font-size: 20px;
-  margin: 10px 0 20px 0;
 }
 
-.page-detail > .section-comment > .form--comment > .f-btn:hover {
-  background-color: #147de2;
-}
-
-.page-detail > .section-comment > .comment-list .comment-item {
-  background-color: #f5f5f5;
-  font-size: 12px;
-  padding: 5px;
+.comment-item {
   margin-bottom: 10px;
+  padding: 5px;
+  font-size: 12px;
+  background-color: #f5f5f5;
 }
 
-.page-detail > .section-comment > .comment-list .comment-item:hover {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-.page-detail > .section-comment > .comment-list .comment-item > .comment-bd p {
+.comment-bd p {
   font-size: 14px;
 }
 
-.page-detail > .section-comment > .comment-list .comment-item .item-time {
+.item-time {
   color: #666;
 }
 
-.page-detail > .section-comment > .comment-list .comment-item .item-user,
-.page-detail > .section-comment > .comment-list .comment-item .ft-oper {
-  color: #188eee;
+.item-user {
+  margin-left: 10px;
+}
+
+.item-user,
+.ft-oper {
   cursor: pointer;
 }
 
-.page-detail > .section-comment > .comment-list .comment-item .item-user:hover,
-.page-detail > .section-comment > .comment-list .comment-item .ft-oper:hover {
+.item-user:hover,
+.ft-oper:hover {
   color: #147de2;
 }
 
-.page-detail > .section-comment > .comment-list .comment-item .comment-ft {
+.comment-ft {
   text-align: right;
 }
